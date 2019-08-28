@@ -35,16 +35,16 @@ public class InputLogistic implements Serializable {
     
     @Column(name = "action_date")
     @Temporal(TemporalType.DATE)
-    private Date actionDate;
+    private Date date;
 
     public InputLogistic() {}
     
-    public InputLogistic(String name, String description, Double amount, Date actionDate) {
+    public InputLogistic(String name, String description, Double amount, Date date) {
         super();
         this.name = name;
         this.description = description;
         this.amount = amount;
-        this.actionDate = actionDate;
+        this.date = date;
     }
 
     public Long getId() {
@@ -63,8 +63,8 @@ public class InputLogistic implements Serializable {
         return amount;
     }
 
-    public Date getActionDate() {
-        return actionDate;
+    public Date getDate() {
+        return date;
     }
 
     public void setName(String name) {
@@ -79,15 +79,15 @@ public class InputLogistic implements Serializable {
         this.amount = amount;
     }
 
-    public void setActionDate(Date actionDate) {
-        this.actionDate = actionDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((actionDate == null) ? 0 : actionDate.hashCode());
+        result = prime * result + ((date == null) ? 0 : date.hashCode());
         result = prime * result + ((amount == null) ? 0 : amount.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -104,10 +104,10 @@ public class InputLogistic implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         InputLogistic other = (InputLogistic) obj;
-        if (actionDate == null) {
-            if (other.actionDate != null)
+        if (date == null) {
+            if (other.date != null)
                 return false;
-        } else if (!actionDate.equals(other.actionDate))
+        } else if (!date.equals(other.date))
             return false;
         if (amount == null) {
             if (other.amount != null)

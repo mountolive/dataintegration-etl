@@ -36,15 +36,15 @@ public class Logistic implements Serializable {
     
     @Column(name = "action_date")
     @Temporal(TemporalType.DATE)
-    private Date actionDate;
+    private Date date;
 
     public Logistic() {}
     
-    public Logistic(String upcasedName, String description, Double squaredAmount, Date actionDate) {
+    public Logistic(String upcasedName, String description, Double squaredAmount, Date date) {
         this.upcasedName = upcasedName;
         this.description = description;
         this.squaredAmount = squaredAmount;
-        this.actionDate = actionDate;
+        this.date = date;
     }
 
     public Long getId() {
@@ -63,8 +63,8 @@ public class Logistic implements Serializable {
         return squaredAmount;
     }
 
-    public Date getActionDate() {
-        return actionDate;
+    public Date getDate() {
+        return date;
     }
 
     public void setUpcasedName(String upcasedName) {
@@ -79,15 +79,15 @@ public class Logistic implements Serializable {
         this.squaredAmount = squaredAmount;
     }
 
-    public void setActionDate(Date actionDate) {
-        this.actionDate = actionDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((actionDate == null) ? 0 : actionDate.hashCode());
+        result = prime * result + ((date == null) ? 0 : date.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((squaredAmount == null) ? 0 : squaredAmount.hashCode());
@@ -104,10 +104,10 @@ public class Logistic implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         Logistic other = (Logistic) obj;
-        if (actionDate == null) {
-            if (other.actionDate != null)
+        if (date == null) {
+            if (other.date != null)
                 return false;
-        } else if (!actionDate.equals(other.actionDate))
+        } else if (!date.equals(other.date))
             return false;
         if (description == null) {
             if (other.description != null)
