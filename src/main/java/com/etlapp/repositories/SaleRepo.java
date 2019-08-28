@@ -1,4 +1,4 @@
-package com.etlapp.repository;
+package com.etlapp.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 

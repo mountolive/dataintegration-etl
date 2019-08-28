@@ -5,8 +5,8 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.etlapp.repository.LogisticRepo;
-import com.etlapp.repository.RawLogisticRepo;
+import com.etlapp.repositories.LogisticRepo;
+import com.etlapp.repositories.RawLogisticRepo;
 
 public class TransformLogisticService implements ITransformLogisticService {
     @Autowired

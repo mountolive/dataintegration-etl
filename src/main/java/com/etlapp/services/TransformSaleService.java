@@ -5,8 +5,8 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.etlapp.repository.RawSaleRepo;
-import com.etlapp.repository.SaleRepo;
+import com.etlapp.repositories.RawSaleRepo;
+import com.etlapp.repositories.SaleRepo;
 
 public class TransformSaleService implements ITransformSaleService {
     @Autowired

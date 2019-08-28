@@ -5,8 +5,8 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.etlapp.repository.PurchaseRepo;
-import com.etlapp.repository.RawPurchaseRepo;
+import com.etlapp.repositories.PurchaseRepo;
+import com.etlapp.repositories.RawPurchaseRepo;
 
 public class TransformPurchaseService implements ITransformPurchaseService {
     @Autowired
