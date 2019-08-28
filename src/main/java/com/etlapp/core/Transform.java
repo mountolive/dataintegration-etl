@@ -1,4 +1,4 @@
-package com.etlapp.transform;
+package com.etlapp.core;
 
 public interface Transform<S, T> {
 	

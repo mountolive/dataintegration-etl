@@ -5,8 +5,6 @@ import java.util.Map;
 
 import com.etlapp.exceptions.MapperException;
 import com.etlapp.exceptions.ReadingFileException;
-import com.etlapp.transform.ExtractLine;
-import com.etlapp.transform.Transform;
 
 /**
  * Class to be used as a basic construct for transorming a class in 

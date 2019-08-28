@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.etlapp.core.ExtractLine;
 import com.etlapp.core.GenericFactory;
 import com.etlapp.core.Mapper;
+import com.etlapp.core.Transform;
 import com.etlapp.core.WorksheetReader;
 import com.etlapp.exceptions.MapperException;
 import com.etlapp.exceptions.ReadingFileException;
 import com.etlapp.exceptions.ReflectionException;
-import com.etlapp.transform.ExtractLine;
-import com.etlapp.transform.Transform;
 
 /**
  * Utility class meant to be used as a first step's extraction
