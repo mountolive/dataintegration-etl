@@ -38,7 +38,7 @@ public class InputDbConfig {
 																	   DataSource dataSource) {
 		return builder
 				.dataSource(dataSource)
-				.packages("com.etlapp.dataintegration.extraction.input.entities")
+				.packages("com.etlapp.extraction.input.entities")
 				.persistenceUnit("input")
 				.build();
 		

@@ -39,7 +39,7 @@ public class OutputDbConfig {
 																	          DataSource dataSource) {
 		return builder
 				.dataSource(dataSource)
-				.packages("com.etlapp.dataintegration.entities")
+				.packages("com.etlapp.entities")
 				.persistenceUnit("output")
 				.build();
 	}
