@@ -1,4 +1,4 @@
-package com.etlapp.extraction.input.entities;
+package com.etlapp.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,36 +14,36 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "logistic")
-public class InputLogistic implements Serializable {
+public class Logistic implements Serializable {
+    
     /**
      * 
      */
-    private static final long serialVersionUID = -8151050456133192748L;
-    
+    private static final long serialVersionUID = 2674058833531720985L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "upcased_name")
+    private String upcasedName;
     
     @Column(name = "description")
     private String description;
     
-    @Column(name = "amount")
-    private Double amount;
+    @Column(name = "squared_amount")
+    private Double squaredAmount;
     
     @Column(name = "action_date")
     @Temporal(TemporalType.DATE)
     private Date actionDate;
 
-    public InputLogistic() {}
+    public Logistic() {}
     
-    public InputLogistic(String name, String description, Double amount, Date actionDate) {
-        super();
-        this.name = name;
+    public Logistic(String upcasedName, String description, Double squaredAmount, Date actionDate) {
+        this.upcasedName = upcasedName;
         this.description = description;
-        this.amount = amount;
+        this.squaredAmount = squaredAmount;
         this.actionDate = actionDate;
     }
 
@@ -51,32 +51,32 @@ public class InputLogistic implements Serializable {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUpcasedName() {
+        return upcasedName;
     }
-
+    
     public String getDescription() {
         return description;
     }
 
-    public Double getAmount() {
-        return amount;
+    public Double getSquaredAmount() {
+        return squaredAmount;
     }
 
     public Date getActionDate() {
         return actionDate;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUpcasedName(String upcasedName) {
+        this.upcasedName = upcasedName;
     }
-
+    
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setSquaredAmount(Double squaredAmount) {
+        this.squaredAmount = squaredAmount;
     }
 
     public void setActionDate(Date actionDate) {
@@ -88,10 +88,10 @@ public class InputLogistic implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((actionDate == null) ? 0 : actionDate.hashCode());
-        result = prime * result + ((amount == null) ? 0 : amount.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((squaredAmount == null) ? 0 : squaredAmount.hashCode());
+        result = prime * result + ((upcasedName == null) ? 0 : upcasedName.hashCode());
         return result;
     }
 
@@ -103,16 +103,11 @@ public class InputLogistic implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        InputLogistic other = (InputLogistic) obj;
+        Logistic other = (Logistic) obj;
         if (actionDate == null) {
             if (other.actionDate != null)
                 return false;
         } else if (!actionDate.equals(other.actionDate))
-            return false;
-        if (amount == null) {
-            if (other.amount != null)
-                return false;
-        } else if (!amount.equals(other.amount))
             return false;
         if (description == null) {
             if (other.description != null)
@@ -124,12 +119,16 @@ public class InputLogistic implements Serializable {
                 return false;
         } else if (!id.equals(other.id))
             return false;
-        if (name == null) {
-            if (other.name != null)
+        if (squaredAmount == null) {
+            if (other.squaredAmount != null)
                 return false;
-        } else if (!name.equals(other.name))
+        } else if (!squaredAmount.equals(other.squaredAmount))
+            return false;
+        if (upcasedName == null) {
+            if (other.upcasedName != null)
+                return false;
+        } else if (!upcasedName.equals(other.upcasedName))
             return false;
         return true;
     }
-    
 }
