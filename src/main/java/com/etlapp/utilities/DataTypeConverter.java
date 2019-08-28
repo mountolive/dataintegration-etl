@@ -15,15 +15,16 @@ public class DataTypeConverter {
 	 * @return Object's subclass. Depending on the rClass and vale, any of the boxed types or a Date
 	 */
 	public Object convertToParameterType(Class<?> rClass, String value) {
+		//Switch cased to avoid the conundrum of using reflection
 		switch(rClass.getName()) {
 		case "Integer":
-			return Integer.parseInt(value);
+			return Integer.valueOf(value);
 		case "Double":
-			return Double.parseDouble(value);
+			return Double.valueOf(value);
 		case "Long":
-			return Long.parseLong(value);
+			return Long.valueOf(value);
 		case "Boolean":
-			return Boolean.parseBoolean(value);
+			return Boolean.valueOf(value);
 		case "Date":
 			return Date.valueOf(value);
 		default:
