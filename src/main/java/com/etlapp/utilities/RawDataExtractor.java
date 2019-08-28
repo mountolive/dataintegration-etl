@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +37,7 @@ public class RawDataExtractor<S, T> {
 		Transform<S, T> transformer =  new Transform<S, T>() {
 			@Override
 			public T transform(S source) throws Exception {
-				ExtractReflectHelper<T> reflektor = new ExtractReflectHelper<>(new HashMap<String, String>());
+				ExtractReflectHelper<T> reflektor = new ExtractReflectHelper<>();
 				try {
 					return reflektor.fromEntity(source, new GenericFactory<T>().build());
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
@@ -68,7 +67,7 @@ public class RawDataExtractor<S, T> {
 			ExtractLine<T> extractor = new ExtractLine<T>() {
 				@Override
 			  	public T extract(Map<String, String> line) throws Exception {
-					ExtractReflectHelper<T> reflektor = new ExtractReflectHelper<>(new HashMap<String, String>());
+					ExtractReflectHelper<T> reflektor = new ExtractReflectHelper<>();
 			  		return reflektor.fromWorksheet(new GenericFactory<T>().build(), line);
 			  	}
 			};
