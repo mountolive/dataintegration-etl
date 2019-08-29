@@ -1,6 +1,8 @@
 package com.etlapp.services;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class ExtractSaleService implements IExtractSaleService {
     }
 
     @Override
-    public List<RawSale> extractRawSaleFromJdbc(Date fromDate) {
+    public List<RawSale> extractRawFromJdbc(LocalDateTime fromDate) {
         List<InputSale> inputSales = inputSaleRepo.listAllSalesBySaleDate(fromDate);
         RawDataExtractor<InputSale, RawSale> extractor = new RawDataExtractor<>();
         List<RawSale> rawSales = extractor.fromDataSource(inputSales);
@@ -42,11 +44,11 @@ public class ExtractSaleService implements IExtractSaleService {
     }
 
     @Override
-    public List<RawSale> extractRawSaleFromWorksheet(Date fromDate, boolean isXlsx) {
+    public List<RawSale> extractRawFromWorksheet(LocalDateTime fromDate, boolean isXlsx) {
         WorksheetRetriever retriever;
         if(isXlsx) retriever = new WorksheetRetriever(ExtensionType.XLSX);
         else retriever = new WorksheetRetriever(ExtensionType.CSV);
-        File worksheet = retriever.getFileFromDate(fromDate, RetailType.SALE);
+        File worksheet = retriever.getFileFromDate(Date.from(fromDate.atZone(ZoneId.systemDefault()).toInstant()), RetailType.SALE);
         RawDataExtractor<InputSale, RawSale> extractor = new RawDataExtractor<>();
         List<RawSale> rawSales = extractor.fromWorksheet(worksheet);
         return rawSaleRepo.saveAll(rawSales);

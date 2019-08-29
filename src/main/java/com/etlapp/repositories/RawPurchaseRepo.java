@@ -1,6 +1,6 @@
 package com.etlapp.repositories;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,6 +19,6 @@ public interface RawPurchaseRepo extends JpaRepository<RawPurchase, Long> {
      * @return {@link List} of {@link RawPurchase}
      */
     @Query(value = "SELECT r FROM RawPurchase WHERE r.date >= :from_date")
-    List<RawPurchase> listAllPurchasesByDate(@Param("from_date") Date fromDate);
+    List<RawPurchase> listAllPurchasesByDate(@Param("from_date") LocalDateTime fromDate);
 
 }

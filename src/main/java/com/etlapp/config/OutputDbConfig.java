@@ -16,6 +16,12 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * Configuration class for adding support for outbound jdbc (when extracting to the app's
+ * JDBC and for setting transformed entities into DB)
+ * @author Leo Guercio
+ *
+ */
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(

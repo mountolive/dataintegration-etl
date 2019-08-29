@@ -1,6 +1,6 @@
 package com.etlapp.repositories;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,6 +19,6 @@ public interface RawSaleRepo extends JpaRepository<RawSale, Long> {
      * @return {@link List} of {@link RawSale}
      */
     @Query(value = "SELECT r FROM RawSale WHERE r.date >= :from_date")
-    List<RawSale> listAllSalesByDate(@Param("from_date") Date fromDate);
+    List<RawSale> listAllSalesByDate(@Param("from_date") LocalDateTime fromDate);
     
 }

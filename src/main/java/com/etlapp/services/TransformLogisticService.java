@@ -1,7 +1,7 @@
 package com.etlapp.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -35,7 +35,7 @@ public class TransformLogisticService implements ITransformLogisticService {
     }
 
     @Override
-    public List<Logistic> transform(Date fromDate) {
+    public List<Logistic> transform(LocalDateTime fromDate) {
         List<RawLogistic> rawLogistics = rawLogisticRepo.listAllLogisticsByDate(fromDate);
         List<Logistic> newLogistics = new ArrayList<>();
         Transform<RawLogistic, Logistic> transformer = new Transform<RawLogistic, Logistic>() {

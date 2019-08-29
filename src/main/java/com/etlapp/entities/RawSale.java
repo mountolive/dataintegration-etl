@@ -1,7 +1,7 @@
 package com.etlapp.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,13 +33,13 @@ public class RawSale implements Serializable {
     @Column(name = "total_amount")
     private Double totalAmount;
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     @Column(name = "sale_date")
-    private Date date;
+    private LocalDateTime date;
     
     public RawSale() {}
 
-    public RawSale(String itemName, Double price, Double totalAmount, Date date) {
+    public RawSale(String itemName, Double price, Double totalAmount, LocalDateTime date) {
         super();
         this.itemName = itemName;
         this.price = price;
@@ -63,7 +63,7 @@ public class RawSale implements Serializable {
         return totalAmount;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
@@ -79,7 +79,7 @@ public class RawSale implements Serializable {
         this.totalAmount = totalAmount;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

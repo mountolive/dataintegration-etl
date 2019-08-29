@@ -1,6 +1,6 @@
 package com.etlapp.extraction.input.repositories;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -19,6 +19,6 @@ public interface InputLogisticRepo extends CrudRepository<InputLogistic, Long> {
      * @return {@link List} of {@link InputLogistic}
      */
     @Query(value = "SELECT i FROM InputLogistic WHERE i.date >= :from_date")
-    List<InputLogistic> listAllLogisticsByDate(@Param("from_date") Date fromDate);
+    List<InputLogistic> listAllLogisticsByDate(@Param("from_date") LocalDateTime fromDate);
     
 }

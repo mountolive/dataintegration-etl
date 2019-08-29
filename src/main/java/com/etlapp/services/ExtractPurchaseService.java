@@ -1,6 +1,8 @@
 package com.etlapp.services;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class ExtractPurchaseService implements IExtractPurchaseService {
     }
     
     @Override
-    public List<RawPurchase> extractRawPurchaseFromJdbc(Date fromDate) {
+    public List<RawPurchase> extractRawFromJdbc(LocalDateTime fromDate) {
         List<InputPurchase> inputPurchases = inputPurchaseRepo.listAllPurchasesByDate(fromDate);
         RawDataExtractor<InputPurchase, RawPurchase> extractor = new RawDataExtractor<>();
         List<RawPurchase> rawPurchases = extractor.fromDataSource(inputPurchases);
@@ -43,11 +45,11 @@ public class ExtractPurchaseService implements IExtractPurchaseService {
     }
 
     @Override
-    public List<RawPurchase> extractRawPurchaseFromWorksheet(Date fromDate, boolean isXlsx) {
+    public List<RawPurchase> extractRawFromWorksheet(LocalDateTime fromDate, boolean isXlsx) {
         WorksheetRetriever retriever;
         if(isXlsx) retriever = new WorksheetRetriever(ExtensionType.XLSX);
         else retriever = new WorksheetRetriever(ExtensionType.CSV);
-        File worksheet = retriever.getFileFromDate(fromDate, RetailType.PURCHASE);
+        File worksheet = retriever.getFileFromDate(Date.from(fromDate.atZone(ZoneId.systemDefault()).toInstant()), RetailType.PURCHASE);
         RawDataExtractor<InputPurchase, RawPurchase> extractor = new RawDataExtractor<>();
         List<RawPurchase> rawPurchases = extractor.fromWorksheet(worksheet);
         return rawPurchaseRepo.saveAll(rawPurchases);

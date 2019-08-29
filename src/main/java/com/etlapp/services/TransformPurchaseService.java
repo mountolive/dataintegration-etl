@@ -1,7 +1,7 @@
 package com.etlapp.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -35,7 +35,7 @@ public class TransformPurchaseService implements ITransformPurchaseService {
     }
 
     @Override
-    public List<Purchase> transform(Date fromDate) {
+    public List<Purchase> transform(LocalDateTime fromDate) {
         List<RawPurchase> rawPurchases = rawPurchaseRepo.listAllPurchasesByDate(fromDate);
         List<Purchase> newPurchases = new ArrayList<>();
         Transform<RawPurchase, Purchase> transformer = new Transform<RawPurchase, Purchase>() {

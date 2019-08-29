@@ -1,6 +1,8 @@
 package com.etlapp.services;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class ExtractLogisticService implements IExtractLogisticService {
     }
     
     @Override
-    public List<RawLogistic> extractRawLogisticFromJdbc(Date fromDate) {
+    public List<RawLogistic> extractRawFromJdbc(LocalDateTime fromDate) {
         List<InputLogistic> inputLogistics = inputLogisticRepo.listAllLogisticsByDate(fromDate);
         RawDataExtractor<InputLogistic, RawLogistic> extractor = new RawDataExtractor<>();
         List<RawLogistic> rawLogistics = extractor.fromDataSource(inputLogistics);
@@ -43,11 +45,11 @@ public class ExtractLogisticService implements IExtractLogisticService {
     }
 
     @Override
-    public List<RawLogistic> extractRawLogisticFromWorksheet(Date fromDate, boolean isXlsx) {
+    public List<RawLogistic> extractRawFromWorksheet(LocalDateTime fromDate, boolean isXlsx) {
         WorksheetRetriever retriever;
         if(isXlsx) retriever = new WorksheetRetriever(ExtensionType.XLSX);
         else retriever = new WorksheetRetriever(ExtensionType.CSV);
-        File worksheet = retriever.getFileFromDate(fromDate, RetailType.LOGISTIC);
+        File worksheet = retriever.getFileFromDate(Date.from(fromDate.atZone(ZoneId.systemDefault()).toInstant()), RetailType.LOGISTIC);
         RawDataExtractor<InputLogistic, RawLogistic> extractor = new RawDataExtractor<>();
         List<RawLogistic> rawLogistics = extractor.fromWorksheet(worksheet);
         return rawLogisticRepo.saveAll(rawLogistics);

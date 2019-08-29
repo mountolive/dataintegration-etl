@@ -1,6 +1,6 @@
 package com.etlapp.extraction.input.repositories;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -19,6 +19,6 @@ public interface InputSaleRepo extends CrudRepository<InputSale, Long> {
      * @return {@link List} of {@link InputSale}
      */
     @Query(value = "SELECT i FROM InputSale WHERE i.date >= :from_date")
-    List<InputSale> listAllSalesBySaleDate(@Param("from_date") Date fromDate);
+    List<InputSale> listAllSalesBySaleDate(@Param("from_date") LocalDateTime fromDate);
 
 }
