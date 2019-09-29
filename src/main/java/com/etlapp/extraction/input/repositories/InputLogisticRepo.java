@@ -18,7 +18,7 @@ public interface InputLogisticRepo extends CrudRepository<InputLogistic, Long> {
      * @param fromDate date after which the consumer intents to retrieve the logistic data
      * @return {@link List} of {@link InputLogistic}
      */
-    @Query(value = "SELECT i FROM InputLogistic WHERE i.date >= :from_date")
+    @Query(value = "SELECT i FROM InputLogistic i WHERE i.date >= :from_date")
     List<InputLogistic> listAllLogisticsByDate(@Param("from_date") LocalDateTime fromDate);
     
 }

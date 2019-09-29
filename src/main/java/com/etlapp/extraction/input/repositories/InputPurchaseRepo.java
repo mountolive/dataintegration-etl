@@ -18,7 +18,7 @@ public interface InputPurchaseRepo extends CrudRepository<InputPurchase, Long> {
      * @param fromDate date after which the consumer intents to retrieve the purchases
      * @return {@link List} of {@link InputPurchase}
      */
-    @Query(value = "SELECT i FROM InputPurchase WHERE i.date >= :from_date")
+    @Query(value = "SELECT i FROM InputPurchase i WHERE i.date >= :from_date")
     List<InputPurchase> listAllPurchasesByDate(@Param("from_date") LocalDateTime fromDate);
     
 }

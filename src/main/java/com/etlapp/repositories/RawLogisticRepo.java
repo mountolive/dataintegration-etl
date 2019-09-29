@@ -18,7 +18,7 @@ public interface RawLogisticRepo extends JpaRepository<RawLogistic, Long> {
      * @param fromDate date after which the consumer intents to retrieve the logistics' data
      * @return {@link List} of {@link RawLogistic}
      */
-    @Query(value = "SELECT r FROM RawLogistic WHERE r.date >= :from_date")
+    @Query(value = "SELECT r FROM RawLogistic r WHERE r.date >= :from_date")
     List<RawLogistic> listAllLogisticsByDate(@Param("from_date") LocalDateTime fromDate);
 
 }

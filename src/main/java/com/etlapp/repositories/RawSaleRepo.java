@@ -18,7 +18,7 @@ public interface RawSaleRepo extends JpaRepository<RawSale, Long> {
      * @param fromDate date after which the consumer intents to retrieve the sales
      * @return {@link List} of {@link RawSale}
      */
-    @Query(value = "SELECT r FROM RawSale WHERE r.date >= :from_date")
+    @Query(value = "SELECT r FROM RawSale r WHERE r.date >= :from_date")
     List<RawSale> listAllSalesByDate(@Param("from_date") LocalDateTime fromDate);
     
 }

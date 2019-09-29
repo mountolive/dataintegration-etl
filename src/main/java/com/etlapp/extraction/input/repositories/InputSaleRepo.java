@@ -18,7 +18,7 @@ public interface InputSaleRepo extends CrudRepository<InputSale, Long> {
      * @param fromDate date after which the consumer intents to retrieve the sales
      * @return {@link List} of {@link InputSale}
      */
-    @Query(value = "SELECT i FROM InputSale WHERE i.date >= :from_date")
+    @Query(value = "SELECT i FROM InputSale i WHERE i.date >= :from_date")
     List<InputSale> listAllSalesBySaleDate(@Param("from_date") LocalDateTime fromDate);
 
 }
